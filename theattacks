@@ -1,5 +1,8 @@
 #currently only charizard can attack raichu
 
+from randam import randint
+import thepokemon
+
 def slash():              # low damage high accuarcy
     n=randint(1,10)
     if raichu.hp<=0:
