@@ -1,5 +1,7 @@
 # play as charizard aganist a (currently) defenceless riachu
-import themoves
+
+import theattacks
+
 def fight():
     while raichu.hp>0:
         move=input("Which move? {} ".format(charizard.moves))
