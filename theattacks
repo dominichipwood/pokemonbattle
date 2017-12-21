@@ -1,0 +1,37 @@
+#currently only charizard can attack raichu
+
+def slash():              # low damage high accuarcy
+    n=randint(1,10)
+    if raichu.hp<=0:
+        print("{} is already dead".format(raichu.name))
+    elif n<=9:
+        raichu.hp=max(0,raichu.hp-15)
+        if raichu.hp>0:
+            print("A slash! {} has {}HP remaing".format(raichu.name, raichu.hp ))
+        else:
+            print("A slash! {} fainted, victory!".format(raichu.name))
+    else:
+        print("Slash missed! {} still has {}HP".format(raichu.name, raichu.hp ))
+
+def fire_blast():   # high damage low accuracy
+    n=randint(1,10)
+    if raichu.hp<=0:
+        print("{} is already dead".format(raichu.name))
+    elif n<=5:
+        raichu.hp=max(0,raichu.hp-45)
+        if raichu.hp>0:
+            print("Fire Blast! {} has {}HP remaing".format(raichu.name, raichu.hp ))
+        else:
+            print("Fire Blast! {0} has {1}HP remaing\n{0} fainted, victory!".format(raichu.name,raichu.hp))
+    else:
+        print("Fire Blast has missed! {} still has {}HP".format(raichu.name, raichu.hp ))
+
+def fire_spin():      # high accuracy, can hit multiple times
+    n=randint(1,10)
+    while n<=7:
+        raichu.hp=max(0,raichu.hp-15)
+        print("{0} is caught in a Fire Spin! {0} has {1}HP remaing".format(raichu.name, raichu.hp ))
+        if raichu.hp<=0:
+           return print("{} fainted, victory!".format(raichu.name))
+        n=randint(1,10)
+    print("{} escaped the Fire Spin. It has {}HP remaining".format(raichu.name, raichu.hp ))
