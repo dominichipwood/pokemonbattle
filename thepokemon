@@ -1,0 +1,9 @@
+# the pokemon with attributes name, hp=health points, moves
+class Pokemon:
+    def __init__(self, name, hp, moves):
+        self.name=name
+        self.hp=hp
+        self.moves=moves
+        
+charizard=Pokemon("Charizard", 120, ["slash", "fire spin", "fire blast"])
+raichu=Pokemon("Raichu", 100, ["body slam", "thuderbolt", "flash"])
