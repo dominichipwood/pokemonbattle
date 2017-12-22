@@ -1,11 +1,21 @@
 # play as charizard aganist a (currently) defenceless riachu
-
-import theattacks
+import pokemon as poke
+import attacks as att
+from random import randrange
 
 def fight():
-    while raichu.hp>0:
-        move=input("Which move? {} ".format(charizard.moves))
-        if move in charizard.moves:
-            eval(move.replace(" ", "_"))()
+    while poke.raichu.hp>0 and poke.charizard.hp>0:
+        move=input("Which move? {} ".format(poke.charizard.moves))
+        if move in poke.charizard.moves:
+            move=move.replace(" ", "_")
+            eval("att."+move)()
         else:
-            print("{} doesn't know {}".format(charizard.name, move))
+            print("{} doesn't know {}".format(poke.charizard.name, move))
+            continue
+        # now raichu attacks randomly
+        if poke.raichu.hp>0:
+            i=randrange(3)
+            attack=poke.raichu.moves[i]
+            eval("att."+attack)()
+fight()
+
