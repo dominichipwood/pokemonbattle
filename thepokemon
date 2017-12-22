@@ -4,10 +4,9 @@ class Pokemon:
         self.name=name
         self.hp=hp
         self.moves=moves
-        self.acc=accuracy   #flash will decrease accuracy
-        
+        self.acc=accuracy   #set to 0, may change during battle        
 charizard=Pokemon("Charizard", 110, ["slash", "fire spin", "fire blast"],0)
 raichu=Pokemon("Raichu", 90, ["swift", "thunderbolt", "flash"],0)
-
-    
+alakazam=Pokemon("Alakazam", 100, ["psychic", "psywave", "recover"],0) 
+  
 
