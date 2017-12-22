@@ -1,18 +1,36 @@
+# choose from 3 pokemon and one of the other 2
+
 import pokemon as poke
 import attacks as att
 from random import randrange
 
-# random and pokemon imported there
+poss_pokemon=["charizard", "raichu", "alakazam"]
 
-poke1=input("Choose your pokemon: ")  # prob should do something input something leading to error
-poke2=input("and your oponent: ")   #should write func for eval("poke."+poke1+".hp")
+def cpa(pokemon,attribute):    # "call pokemon attribute" takes string forms and evalutes
+    return eval("poke."+pokemon+"."+attribute)
+
+
+# random and pokemon imported there
+bol=False
+while not bol:
+    poke1=input("Charizard, raichu or alakazam? ")
+    bol= poke1 in poss_pokemon
+    if not bol:
+        print("that is not a pokemon")
+bol=False                       
+while not bol:
+    poke2=input("and your opponent? ")          #possible to choose same, acts as if fighting oneself, i.e. will both win and loss
+    bol= poke2 in poss_pokemon
+    if not bol:
+        print("that is not a pokemon")
+
 
 def fight():
-    while eval("poke."+poke2+".hp")>0 and eval("poke."+poke1+".hp")>0:
+    while cpa(poke2,"hp")>0 and cpa(poke1,"hp")>0:
         move=input("Which move? {} ".format(eval("poke."+poke1+".moves")))
         if move in eval("poke."+poke1+".moves"):
             move=move.replace(" ", "_")
-            eval("att."+move)()
+            eval("att."+move)(poke2)
         else:
             print("{} doesn't know {}".format(eval("poke."+poke1+".name"), move))
             continue
@@ -21,6 +39,5 @@ def fight():
             i=randrange(3)
             move=eval("poke."+poke2+".moves")[i]
             move=move.replace(" ", "_")
-            eval("att."+move)()
+            eval("att."+move)(poke1)
 fight()
-
