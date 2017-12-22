@@ -1,86 +1,142 @@
+# we define attacks for each pokemon. the inputs "breakup" are there to slow game down. 
+
 import pokemon as poke
 from random import randint
 
 #charizard's attacks
 
-def slash():
+def slash(opp_string): 
+    opp=eval("poke."+opp_string)
     print("{} used Slash!".format(poke.charizard.name))
     n=randint(1,10)
-    if n<=9+poke.charizard.acc:
-        poke.raichu.hp=max(0,poke.raichu.hp-15)
-        if poke.raichu.hp>0:
-            print("A hit! {} has {}HP remaing".format(poke.raichu.name, poke.raichu.hp ))
+    if n<=8+poke.charizard.acc:
+        opp.hp=max(0,opp.hp-20)
+        if opp.hp>0:
+            print("A hit! {} has {}HP remaing".format(opp.name, opp.hp ))
             breakup=input()             # to control pace of game
         else:
-            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(poke.raichu.name, poke.raichu.hp, poke.charizard.name))
+            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name, opp.hp, poke.charizard.name))
     else:
-        print("Slash missed! {} still has {}HP".format(poke.raichu.name, poke.raichu.hp ))
+        print("Slash missed! {} still has {}HP".format(opp.name, opp.hp ))
         breakup=input()
 
-        
-def fire_blast():
+     
+def fire_blast(opp_string): 
+    opp=eval("poke."+opp_string)
     print("{} used fire blast!".format(poke.charizard.name))
     n=randint(1,10)
     if n<=4+poke.charizard.acc:
-        poke.raichu.hp=max(0,poke.raichu.hp-45)
-        if poke.raichu.hp>0:
-            print("A hit! {} has {}HP remaing".format(poke.raichu.name, poke.raichu.hp ))
+        opp.hp=max(0,opp.hp-45)
+        if opp.hp>0:
+            print("A hit! {} has {}HP remaing".format(opp.name, opp.hp ))
             breakup=input()
         else:
-            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(poke.raichu.name,poke.raichu.hp, poke.charizard.name))
+            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name,opp.hp, poke.charizard.name))
     else:
-        print("Fire Blast has missed! {} still has {}HP".format(poke.raichu.name, poke.raichu.hp ))
+        print("Fire Blast has missed! {} still has {}HP".format(opp.name, opp.hp ))
         breakup=input()
 
-def fire_spin():    # captures raichu in a fire spin
+def fire_spin(opp_string):      # captures raichu in a fire spin
+    opp=eval("poke."+opp_string)
     print("{} used Fire Spin!".format(poke.charizard.name))
     n=randint(1,10)
     while n<=7+poke.charizard.acc:
-        poke.raichu.hp=max(0,poke.raichu.hp-15)
-        print("{0} is caught in a Fire Spin! {0} has {1}HP remaing".format(poke.raichu.name, poke.raichu.hp ))
+        opp.hp=max(0,opp.hp-15)
+        print("{0} is caught in a Fire Spin! {0} has {1}HP remaing".format(opp.name, opp.hp ))
         breakup=input()
-        if poke.raichu.hp==0:
-           print("{} fainted, {} wins!".format(poke.raichu.name, poke.charizard.name))
+        if opp.hp==0:
+           print("{} fainted, {} wins!".format(opp.name, poke.charizard.name))
            break
         n=randint(1,10)
         
-    if poke.raichu.hp>0:
-        print("{} escaped the Fire Spin. It has {}HP remaining".format(poke.raichu.name, poke.raichu.hp ))
+    if opp.hp>0:
+        print("{} escaped the Fire Spin. It has {}HP remaining".format(opp.name, opp.hp ))
         breakup=input()
 
-# raichu attacks
+# raichu's attacks
 
-def swift(): #100% accurate 
+def swift(opp_string):
+    opp=eval("poke."+opp_string)
     print("{} used Swift!".format(poke.raichu.name))
-    poke.charizard.hp=max(0,poke.charizard.hp-10)
-    if poke.charizard.hp>0:
-        print("A hit! {} has {}HP remaing".format(poke.charizard.name, poke.charizard.hp ))
+    opp.hp=max(0,opp.hp-10)
+    if opp.hp>0:
+        print("A hit! {} has {}HP remaing".format(opp.name, opp.hp))
         breakup=input()
     else:
-        print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(poke.charizard.name,poke.charizard.hp, poke.raichu.name))
+        print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name,opp.hp, poke.raichu.name))
 
-def thunderbolt():
+
+def thunderbolt(opp_string): 
+    opp=eval("poke."+opp_string)
     print("{} used Thunderbolt!".format(poke.raichu.name))
     n=randint(1,10)
-    if n<=6+poke.raichu.acc:
-        poke.charizard.hp=max(0,poke.charizard.hp-30)
-        if poke.raichu.hp>0:
-            print("A hit! {} has {}HP remaing".format(poke.charizard.name, poke.charizard.hp ))
+    if n<=7+poke.raichu.acc:
+        opp.hp=max(0,opp.hp-30)
+        if opp.hp>0:
+            print("A hit! {} has {}HP remaing".format(opp.name, opp.hp ))
             breakup=input()
         else:
-            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(poke.charizard.name,poke.charizard.hp, poke.raichu.name))
+            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name,opp.hp, poke.raichu.name))
     else:
-        print("Thunderbolt missed! {} still has {}HP".format(poke.charizard.name, poke.charizard.hp ))
+        print("Thunderbolt missed! {} still has {}HP".format(opp.name, opp.hp ))
         breakup=input()
 
-def flash():
+def flash(opp_string):  # reduces opponents accuracy
+    opp=eval("poke."+opp_string)
     print("{} used Flash!".format(poke.raichu.name))
     n=randint(1,10)
     if n<=8+poke.raichu.acc:
-        poke.charizard.acc=max(-3,poke.charizard.acc-1)
-        print("{} accuracy decreased".format(poke.charizard.name))
+        opp.acc=max(-3,opp.acc-1)
+        print("{} accuracy decreased".format(opp.name))
         breakup=input()
     else:
         print("Flash was uneffective")
+        breakup=input()
+
+#Alakazam's moves
+
+def psychic(opp_string): 
+    opp=eval("poke."+opp_string)
+    print("{} used Psychic!".format(poke.alakazam.name))
+    n=randint(1,10)
+    if n<=6+poke.alakazam.acc:
+        opp.hp=max(0,opp.hp-35)
+        if opp.hp>0:
+            print("A hit! {} has {}HP remaing".format(opp.name, opp.hp ))
+            breakup=input()
+        else:
+            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name,opp.hp, poke.alakazam.name))
+    else:
+        print("Psychic missed! {} still has {}HP".format(opp.name, opp.hp ))
+        breakup=input()
+
+def psywave(opp_string):    # random damage between 5 and 50
+    opp=eval("poke."+opp_string)
+    print("{} used Psywave!".format(poke.alakazam.name))
+    n=randint(1,10)
+    if n<=7+poke.alakazam.acc:
+        d=randint(1,10)
+        opp.hp=max(0,opp.hp-5*d)
+        if opp.hp>0:
+            print("A hit! {} has {}HP remaing".format(opp.name, opp.hp ))
+            breakup=input()
+        else:
+            print("A hit! {0} has {1}HP remaing\n{0} fainted, {2} wins!".format(opp.name,opp.hp, poke.alakazam.name))
+    else:
+        print("Psywave missed! {} still has {}HP".format(opp.name, opp.hp ))
+        breakup=input()
+
+def recover(opp_string):    # random hp recovered, between 15 and 55
+    opp=eval("poke."+opp_string)
+    print("{} used Recover!".format(poke.alakazam.name))
+    n=randint(1,11)
+    if n<=8:
+        d=randint(3,10)
+        poke.alakazam.hp=min(100,poke.alakazam.hp+5*d)
+        print("Sucess! {0} has recoverd {2}HP. {0} now have {1}HP".format(poke.alakazam.name, poke.alakazam.hp, 5*d ))
+        breakup=input()
+    else:
+        print("Recover failed! {} still has {}HP".format(poke.alakazam.name, poke.alakazam.hp ))
+        breakup=input()
 
 
