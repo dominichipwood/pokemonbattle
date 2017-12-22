@@ -1,9 +1,13 @@
-# the pokemon with attributes name, hp=health points, moves
+# the pokemon with attributes name, hp=health points, moves, accuracy
 class Pokemon:
-    def __init__(self, name, hp, moves):
+    def __init__(self, name, hp, moves, accuracy):
         self.name=name
         self.hp=hp
         self.moves=moves
+        self.acc=accuracy   #flash will decrease accuracy
         
-charizard=Pokemon("Charizard", 120, ["slash", "fire spin", "fire blast"])
-raichu=Pokemon("Raichu", 100, ["body slam", "thuderbolt", "flash"])
+charizard=Pokemon("Charizard", 110, ["slash", "fire spin", "fire blast"],0)
+raichu=Pokemon("Raichu", 90, ["swift", "thunderbolt", "flash"],0)
+
+    
+
